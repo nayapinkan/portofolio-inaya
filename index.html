@@ -1,0 +1,1185 @@
+<title>Portofolio Inaya Pinkan Prasetyo</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap">
+<style>
+  /* Layout: tumpukan panel bersudut bulat, meniru kartu swatch pada referensi warna.
+   Tiap panel bergiliran memakai peran warna A (cream), B (beige), C (deep ocean).
+   Garis meta di dasar panel mengulang label hex pada kartu swatch. */
+  :root {
+    --cream: #EEE8DF;
+    --beige: #C4BCB0;
+    --ocean: #2C365A;
+
+    --display: "Instrument Serif", "Cormorant Garamond", Georgia, serif;
+    --body: "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+    --page: var(--cream);
+    --page-fg: var(--ocean);
+
+    --a-bg: #F7F3EC;
+    --a-fg: var(--ocean);
+    --a-card: #EEE8DF;
+
+    --b-bg: var(--beige);
+    --b-fg: var(--ocean);
+    --b-card: #D6D0C6;
+
+    --c-bg: var(--ocean);
+    --c-fg: var(--cream);
+    --c-card: #384370;
+
+    --shadow: 0 6px 16px rgba(44, 54, 90, 0.14);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --page: #141A33;
+      --page-fg: #EEE8DF;
+      --a-bg: #1E2646;
+      --a-fg: #EEE8DF;
+      --a-card: #2A3358;
+      --b-bg: #2C365A;
+      --b-fg: #EEE8DF;
+      --b-card: #38436C;
+      --c-bg: #EEE8DF;
+      --c-fg: #2C365A;
+      --c-card: #E0D9CD;
+      --shadow: none;
+      color-scheme: dark;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --page: #141A33;
+    --page-fg: #EEE8DF;
+    --a-bg: #1E2646;
+    --a-fg: #EEE8DF;
+    --a-card: #2A3358;
+    --b-bg: #2C365A;
+    --b-fg: #EEE8DF;
+    --b-card: #38436C;
+    --c-bg: #EEE8DF;
+    --c-fg: #2C365A;
+    --c-card: #E0D9CD;
+    --shadow: none;
+    color-scheme: dark;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    background: var(--page);
+    color: var(--page-fg);
+    font: 400 16px/1.6 var(--body);
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    padding-block: 20px 36px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 1120px;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  h1,
+  h2,
+  h3,
+  p,
+  ul,
+  dl,
+  dd {
+    margin: 0;
+  }
+
+  ul {
+    padding: 0;
+    list-style: none;
+  }
+
+  a {
+    color: inherit;
+  }
+
+  :focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  section[id] {
+    scroll-margin-top: 16px;
+  }
+
+  /* Bilah atas */
+  .bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px 24px;
+    padding: 14px 22px;
+    border: 1px solid color-mix(in srgb, var(--page-fg) 45%, transparent);
+    border-radius: 18px;
+  }
+
+  .label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    line-height: 1.45;
+  }
+
+  .bar-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 20px;
+  }
+
+  .bar-nav a {
+    font-size: 0.92rem;
+    font-weight: 500;
+    text-decoration: none;
+    padding-block: 4px;
+    border-bottom: 1px solid transparent;
+  }
+
+  .bar-nav a:hover {
+    border-bottom-color: currentColor;
+  }
+
+  .bar-end {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .mark {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 2.3rem;
+    line-height: 1;
+  }
+
+  .mode {
+    font: 600 0.78rem/1 var(--body);
+    letter-spacing: 0.02em;
+    color: inherit;
+    background: transparent;
+    border: 1px solid color-mix(in srgb, var(--page-fg) 45%, transparent);
+    border-radius: 999px;
+    padding: 8px 14px;
+    cursor: pointer;
+  }
+
+  .mode:hover {
+    background: color-mix(in srgb, var(--page-fg) 10%, transparent);
+  }
+
+  @media (max-width: 800px) {
+    .bar-nav {
+      order: 3;
+      flex-basis: 100%;
+    }
+  }
+
+  /* Panel */
+  .panel {
+    --p-mute: color-mix(in srgb, var(--p-fg) 88%, var(--p-bg));
+    --p-line: color-mix(in srgb, var(--p-fg) 28%, transparent);
+    background: var(--p-bg);
+    color: var(--p-fg);
+    border-radius: 24px;
+    padding: clamp(22px, 4.5vw, 44px);
+    display: flex;
+    flex-direction: column;
+    gap: clamp(22px, 3.5vw, 36px);
+    min-width: 0;
+  }
+
+  .tone-a {
+    --p-bg: var(--a-bg);
+    --p-fg: var(--a-fg);
+    --p-card: var(--a-card);
+  }
+
+  .tone-b {
+    --p-bg: var(--b-bg);
+    --p-fg: var(--b-fg);
+    --p-card: var(--b-card);
+  }
+
+  .tone-c {
+    --p-bg: var(--c-bg);
+    --p-fg: var(--c-fg);
+    --p-card: var(--c-card);
+  }
+
+  .hero {
+    box-shadow: var(--shadow);
+  }
+
+  h2 {
+    font: italic 400 clamp(2.6rem, 7vw, 4.4rem)/1 var(--display);
+    text-wrap: balance;
+  }
+
+  h3 {
+    font: italic 400 1.8rem/1.12 var(--display);
+    text-wrap: balance;
+  }
+
+  .eyebrow {
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+
+  .lead {
+    font-size: 1.08rem;
+    max-width: 62ch;
+    color: var(--p-mute);
+  }
+
+  .meta {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 6px 20px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding-top: 16px;
+    border-top: 1px solid var(--p-line);
+  }
+
+  /* Hero */
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    gap: clamp(28px, 5vw, 56px);
+    align-items: center;
+  }
+
+  .hero-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-width: 0;
+  }
+
+  .name {
+    font: italic 400 clamp(3.1rem, 10.5vw, 6.6rem)/0.95 var(--display);
+    letter-spacing: -0.01em;
+    overflow-wrap: anywhere;
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    font: 600 0.92rem/1 var(--body);
+    text-decoration: none;
+    cursor: pointer;
+    padding: 0 20px;
+    border-radius: 999px;
+    border: 1px solid var(--p-fg);
+    color: var(--p-fg);
+    background: transparent;
+  }
+
+  .btn.solid {
+    background: var(--p-fg);
+    color: var(--p-bg);
+  }
+
+  .btn:hover {
+    opacity: 0.86;
+  }
+
+  /* Foto profil: bingkai lengkung dengan garis bergeser */
+  .portrait {
+    position: relative;
+    width: 100%;
+    max-width: 380px;
+    justify-self: end;
+    margin: 0 14px 14px 0;
+  }
+
+  .portrait::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    transform: translate(14px, 14px);
+    border: 1.5px solid var(--p-fg);
+    border-radius: 50% 50% 28px 28px / 40% 40% 28px 28px;
+  }
+
+  .portrait-frame {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    border-radius: 50% 50% 28px 28px / 40% 40% 28px 28px;
+    overflow: hidden;
+    background: var(--b-bg);
+    box-shadow: var(--shadow);
+  }
+
+  .portrait-frame img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 12%;
+  }
+
+  @media (max-width: 800px) {
+    .hero-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .portrait {
+      order: -1;
+      justify-self: start;
+      max-width: 280px;
+    }
+  }
+
+  /* Pengalaman */
+  .job {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.7fr);
+    gap: clamp(24px, 5vw, 56px);
+  }
+
+  .job-head {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 0;
+  }
+
+  .job-head p {
+    color: var(--p-mute);
+  }
+
+  .tasks>li {
+    padding: 14px 0;
+    border-top: 1px solid var(--p-line);
+  }
+
+  .tasks>li:last-child {
+    border-bottom: 1px solid var(--p-line);
+  }
+
+  .tasks strong {
+    font-weight: 700;
+  }
+
+  @media (max-width: 800px) {
+    .job {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  /* Dokumentasi magang: tinggi foto sama, lebar mengikuti rasio masing-masing */
+  .docs {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .photos {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+
+  .photo-item {
+    margin: 0;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .photo-item.wide {
+    flex: 1.331 1 0;
+  }
+
+  .photo-item.tall {
+    flex: 0.564 1 0;
+  }
+
+  .photo {
+    border-radius: 14px;
+    overflow: hidden;
+    background: color-mix(in srgb, var(--p-fg) 8%, transparent);
+  }
+
+  .photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: zoom-in;
+  }
+
+  .photo-item figcaption {
+    font-size: 0.86rem;
+    color: var(--p-mute);
+    padding-inline: 4px;
+  }
+
+  @media (max-width: 720px) {
+    .photos {
+      flex-wrap: wrap;
+    }
+
+    .photo-item.wide {
+      flex: 1 1 100%;
+    }
+
+    .photo-item.tall {
+      flex: 1 1 calc(50% - 7px);
+    }
+  }
+
+  /* Proyek */
+  .sec-head {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .projects {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .card {
+    background: var(--p-card);
+    border-radius: 18px;
+    padding: clamp(18px, 3vw, 26px);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-width: 0;
+  }
+
+  .card.featured {
+    grid-column: 1 / -1;
+  }
+
+  .card p {
+    color: var(--p-mute);
+  }
+
+  .tag {
+    align-self: flex-start;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--p-fg);
+  }
+
+  .tag.sample {
+    border-style: dashed;
+  }
+
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: auto;
+    padding-top: 6px;
+  }
+
+  .chips li {
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 3px 11px;
+    border-radius: 999px;
+    border: 1px solid var(--p-line);
+  }
+
+  .card .card-link {
+    align-self: flex-start;
+    min-height: 38px;
+    padding: 0 16px;
+    font-size: 0.84rem;
+    margin-top: 4px;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .card {
+      transition: transform 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+    }
+  }
+
+  @media (max-width: 900px) {
+    .projects {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .projects .card:last-child {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .projects {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  /* Keahlian dan pendidikan */
+  .cols {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+    gap: clamp(22px, 4vw, 40px);
+  }
+
+  .col {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    min-width: 0;
+  }
+
+  .col .chips {
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  .col .chips li {
+    font-size: 0.9rem;
+    padding: 5px 13px;
+  }
+
+  .list>li {
+    padding: 11px 0;
+    border-top: 1px solid var(--p-line);
+  }
+
+  .list>li:last-child {
+    border-bottom: 1px solid var(--p-line);
+  }
+
+  .list .sub {
+    display: block;
+    font-size: 0.88rem;
+    color: var(--p-mute);
+  }
+
+  .list strong {
+    font-weight: 700;
+  }
+
+  /* Pendidikan: logo di kiri, keterangan di kanan */
+  .edu-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .edu > li {
+    border-top: 1px solid var(--p-line);
+  }
+
+  .edu-item {
+    display: grid;
+    grid-template-columns: 120px minmax(0, 1fr);
+    align-items: center;
+    gap: clamp(18px, 4vw, 48px);
+    padding: 26px 0;
+  }
+
+  .edu-logo {
+    display: block;
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+  }
+
+  .edu-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+  }
+
+  .edu-text strong {
+    font-size: 1.35rem;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 4px;
+  }
+
+  .edu-text span {
+    color: var(--p-mute);
+  }
+
+  @media (max-width: 520px) {
+    .edu-item {
+      grid-template-columns: 76px minmax(0, 1fr);
+    }
+
+    .edu-logo {
+      width: 76px;
+      height: 76px;
+    }
+
+    .edu-text strong {
+      font-size: 1.15rem;
+    }
+  }
+
+  /* Sertifikat dan penghargaan */
+  .group {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .certs {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 230px), 1fr));
+    gap: 14px;
+  }
+
+  .cert {
+    margin: 0;
+    background: var(--p-card);
+    border-radius: 18px;
+    padding: 12px 12px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    min-width: 0;
+  }
+
+  .cert figcaption {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding-inline: 6px;
+  }
+
+  .cert figcaption strong {
+    font-weight: 700;
+    line-height: 1.35;
+  }
+
+  .cert .sub {
+    font-size: 0.88rem;
+    color: var(--p-mute);
+  }
+
+  .shot {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    max-width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    background: color-mix(in srgb, var(--p-fg) 6%, transparent);
+    border: 1px solid var(--p-line);
+  }
+
+  .shot.empty {
+    border: 1.5px dashed var(--p-line);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--p-mute);
+  }
+
+  .shot img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    cursor: zoom-in;
+  }
+
+  dialog.lightbox {
+    border: 0;
+    padding: 12px;
+    border-radius: 16px;
+    background: var(--page);
+    color: var(--page-fg);
+    max-width: min(94vw, 1000px);
+    max-height: 92vh;
+  }
+
+  dialog.lightbox::backdrop {
+    background: rgba(20, 26, 51, 0.72);
+  }
+
+  dialog.lightbox img {
+    display: block;
+    max-width: 100%;
+    max-height: 78vh;
+    margin-inline: auto;
+    border-radius: 8px;
+  }
+
+  dialog.lightbox .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 4px 0;
+    font-size: 0.9rem;
+  }
+
+  dialog.lightbox button {
+    font: 600 0.86rem/1 var(--body);
+    color: inherit;
+    background: transparent;
+    cursor: pointer;
+    border: 1px solid currentColor;
+    border-radius: 999px;
+    padding: 10px 16px;
+  }
+
+  /* Kontak */
+  .contact {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+    gap: 14px;
+  }
+
+  .contact-item {
+    background: var(--p-card);
+    border-radius: 18px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 0;
+  }
+
+  .contact-item .value {
+    font: 400 clamp(1.35rem, 3.6vw, 1.8rem)/1.2 var(--display);
+    overflow-wrap: anywhere;
+    user-select: all;
+  }
+
+  .contact-item .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .contact-item .btn {
+    min-height: 40px;
+    padding: 0 16px;
+    font-size: 0.86rem;
+  }
+
+  .foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 22px 0;
+  }
+
+  .foot .mark {
+    font-size: 1.9rem;
+  }
+</style>
+
+<div class="wrap">
+
+  <header class="bar">
+    <p class="label">Portofolio </p>
+    <nav class="bar-nav" aria-label="Navigasi bagian">
+      <a href="#pendidikan">Pendidikan</a>
+      <a href="#pengalaman">Pengalaman</a>
+      <a href="#proyek">Proyek</a>
+      <a href="#keahlian">Keahlian</a>
+      <a href="#sertifikat">Sertifikat</a>
+      <a href="#kontak">Kontak</a>
+    </nav>
+    <div class="bar-end">
+      <button class="mode" id="mode" type="button" aria-label="Ganti tema tampilan">Mode gelap</button>
+      <span class="mark" aria-hidden="true">Inaya</span>
+    </div>
+  </header>
+
+  <main class="wrap" style="gap:14px">
+
+    <!-- Hero -->
+    <section class="panel tone-a hero" aria-labelledby="nama">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Fresh graduate · D4 Komputerisasi Akuntansi</p>
+          <h1 class="name" id="nama">Inaya Pinkan Prasetyo</h1>
+          <p class="lead">Lulusan D4-Komputerisasi Akuntansi Politeknik Negeri Semarang dengan IPK 3.69/4.00.
+            Memiliki pengalaman magang di UPPD Samsat Demak pada bidang administrasi pajak daerah.
+            Terampil menggunakan Ms. Office (Word & Excel), DBMS (MySQL & Access) dan aplikasi akuntansi (MYOB).
+            Memiliki kompetensi dalam pengelolaan administrasi, digitalisasi arsip, penyusunan laporan, pengolahan dan
+            verifikasi data, serta administrasi perpajakan. Didukung dengan sertifikat BNSP Teknisi Akuntansi Muda dan
+            Brevet A & B, dengan motivasi tinggi untuk berkontribusi dan berkembang di bidang akuntansi, finance,
+            administrasi, maupun perpajakan.</p>
+          <div class="actions">
+            <a class="btn solid" href="#proyek">Lihat proyek</a>
+            <a class="btn" href="#kontak">Hubungi saya</a>
+          </div>
+        </div>
+        <figure class="portrait">
+          <div class="portrait-frame">
+            <img src="foto-inaya.jpg" alt="Foto Inaya Pinkan Prasetyo" width="960" height="1440">
+          </div>
+        </figure>
+      </div>
+      <div class="meta"><span>Politeknik Negeri Semarang</span><span>2022 – 2026</span></div>
+    </section>
+
+    <!-- Pendidikan, sertifikasi, penghargaan -->
+    <section class="panel tone-b" id="pendidikan" aria-labelledby="h-pendidikan">
+      <h2 id="h-pendidikan">Pendidikan</h2>
+      <div class="edu-wrap">
+        <p class="eyebrow">Pendidikan</p>
+        <ul class="edu">
+          <li class="edu-item">
+            <img class="edu-logo" src="logo/polines.png" alt="Logo Politeknik Negeri Semarang" width="120" height="120">
+            <div class="edu-text">
+              <strong>Politeknik Negeri Semarang</strong>
+              <span>September 2022 – Agustus 2026</span>
+              <span>D4 Komputerisasi Akuntansi, IPK 3.69/4.00</span>
+            </div>
+          </li>
+          <li class="edu-item">
+            <img class="edu-logo" src="logo/sman1-demak.png" alt="Logo SMA Negeri 1 Demak" width="120" height="120">
+            <div class="edu-text">
+              <strong>SMA N 1 Demak</strong>
+              <span>2019 – 2022</span>
+              <span>Jurusan MIPA, Rata-rata 93.74/100.00</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="meta"><span>Politeknik Negeri Semarang · SMA Negeri 1 Demak</span><span>2019 – 2026</span></div>
+    </section>
+
+    <!-- Pengalaman -->
+    <section class="panel tone-a" id="pengalaman" aria-labelledby="h-pengalaman">
+      <h2 id="h-pengalaman">Pengalaman</h2>
+      <div class="job">
+        <div class="job-head">
+          <p class="eyebrow">Agustus 2025 – Desember 2025</p>
+          <h3>Magang Administrasi Pajak Daerah</h3>
+          <p><strong>UPPD Samsat Kab. Demak.</strong> Unit pelaksana Bapenda Provinsi Jawa Tengah yang mengelola pajak
+            kendaraan bermotor dan administrasi kendaraan secara terpadu.</p>
+        </div>
+        <ul class="tasks">
+          <li>Memverifikasi <strong>100–200 berkas</strong> wajib pajak setiap hari.</li>
+          <li>Memperbaiki dan merekap lebih dari <strong>4.000 data</strong> wajib pajak dalam program Door to Door dan
+            Sengkuyung.</li>
+          <li>Mendampingi bendahara PKB mencatat transaksi penerimaan pajak dan merekonsiliasi laporan dengan data BPD.
+          </li>
+          <li>Menyusun dan mengarsipkan berkas wajib pajak, notice pajak, serta berkas mutasi antardaerah. Kelengkapan
+            dokumen dicek sebelum disimpan.</li>
+        </ul>
+      </div>
+      <div class="docs">
+        <p class="eyebrow">Dokumentasi magang</p>
+        <div class="photos">
+          <figure class="photo-item wide" style="--r: 957 / 719">
+            <div class="photo" style="aspect-ratio: 957 / 719"><img src="dokumentasi/magang-kantor.jpg" alt="Foto bersama pegawai di depan kantor UPPD Samsat Demak" width="957" height="719" loading="lazy"></div>
+            <figcaption>Di depan kantor UPPD Samsat Demak bersama pegawai</figcaption>
+          </figure>
+          <figure class="photo-item tall" style="--r: 494 / 876">
+            <div class="photo" style="aspect-ratio: 494 / 876"><img src="dokumentasi/magang-berkas.jpg" alt="Mengecek berkas wajib pajak sambil mengerjakan data di komputer" width="494" height="876" loading="lazy"></div>
+            <figcaption>Memeriksa berkas wajib pajak</figcaption>
+          </figure>
+          <figure class="photo-item tall" style="--r: 494 / 876">
+            <div class="photo" style="aspect-ratio: 494 / 876"><img src="dokumentasi/magang-door-to-door.jpg" alt="Merekap data pendataan program Door to Door di komputer" width="494" height="876" loading="lazy"></div>
+            <figcaption>Merekap data program Door to Door</figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="meta"><span>UPPD Samsat Kab. Demak</span><span>5 bulan</span></div>
+    </section>
+
+    <!-- Proyek
+         Untuk mengganti proyek contoh: ubah judul, deskripsi, dan alat pada kartu.
+         Hapus elemen <span class="tag sample"> jika proyek sudah menjadi karya asli. -->
+    <section class="panel tone-c" id="proyek" aria-labelledby="h-proyek">
+      <div class="sec-head">
+        <h2 id="h-proyek">Proyek</h2>
+        <p class="lead">Satu penelitian tugas akhir dan beberapa proyek latihan di bidang akuntansi dan sistem
+          informasi.</p>
+      </div>
+      <div class="projects">
+        <article class="card featured">
+          <span class="tag">Tugas akhir</span>
+          <h3>Persepsi Wajib Pajak UMK terhadap Penggunaan Coretax</h3>
+          <p>Penelitian skripsi yang menganalisis bagaimana wajib pajak usaha mikro dan kecil di Kota Semarang menilai
+            penggunaan Coretax. Analisis memakai pendekatan Extended Technology Acceptance Model (E-TAM).</p>
+          <ul class="chips">
+            <li>E-TAM</li>
+            <li>Coretax DJP</li>
+            <li>Wajib pajak UMK</li>
+            <li>Studi kasus Kota Semarang</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <span class="tag sample">Proyek contoh</span>
+          <h3>Laporan Keuangan Usaha Dagang</h3>
+          <p>Simulasi pencatatan transaksi sampai laporan keuangan untuk usaha dagang kecil, dikerjakan dari jurnal
+            hingga neraca.</p>
+          <ul class="chips">
+            <li>MYOB</li>
+            <li>Jurnal</li>
+            <li>Laporan keuangan</li>
+          </ul>
+          <a class="btn card-link" href="https://drive.google.com/drive/folders/1219KJdhCW7WmNcvuyHeVx-bG-dggCyXf?usp=sharing" target="_blank" rel="noopener">Lihat hasil</a>
+        </article>
+
+        <article class="card">
+          <span class="tag">Tugas kuliah</span>
+          <h3>Kumpulan Studi Kasus Excel</h3>
+          <p>Tugas mata kuliah yang berisi berbagai studi kasus dan dikerjakan menggunakan Microsoft Excel.</p>
+          <ul class="chips">
+            <li>Microsoft Excel</li>
+            <li>Studi kasus</li>
+            <li>Tugas mata kuliah</li>
+          </ul>
+          <a class="btn card-link" href="https://drive.google.com/drive/folders/1w0th_md8Wj3DMANxJyyoutlFxyEl5UAz?usp=drive_link" target="_blank" rel="noopener">Lihat hasil</a>
+        </article>
+
+        <article class="card">
+          <span class="tag">Tugas kuliah</span>
+          <h3>Kumpulan Studi Kasus Microsoft Access</h3>
+          <p>Kumpulan tugas kuliah yang dikerjakan menggunakan Microsoft Access.</p>
+          <ul class="chips">
+            <li>Microsoft Access</li>
+            <li>DBMS</li>
+            <li>Tugas mata kuliah</li>
+          </ul>
+          <a class="btn card-link" href="https://drive.google.com/drive/folders/1fbeB3mT1I-rByZW_R8GzAjDn1KVMwMMZ?usp=sharing" target="_blank" rel="noopener">Lihat hasil</a>
+        </article>
+      </div>
+      <div class="meta"><span>Penelitian dan proyek latihan</span><span>4 proyek</span></div>
+    </section>
+
+    <!-- Keahlian -->
+    <section class="panel tone-b" id="keahlian" aria-labelledby="h-keahlian">
+      <h2 id="h-keahlian">Keahlian</h2>
+      <div class="cols">
+        <div class="col">
+          <p class="eyebrow">Kemampuan teknis</p>
+          <ul class="chips">
+            <li>Administrasi</li>
+            <li>Manajemen dokumen</li>
+            <li>Input data</li>
+            <li>Pengarsipan dokumen</li>
+            <li>Rekapitulasi laporan keuangan</li>
+            <li>Pencatatan dan verifikasi keuangan</li>
+            <li>Pemahaman perpajakan</li>
+            <li>Pengelolaan database</li>
+          </ul>
+        </div>
+        <div class="col">
+          <p class="eyebrow">Software dan tools</p>
+          <ul class="chips">
+            <li>Microsoft Word</li>
+            <li>Microsoft Excel</li>
+            <li>Microsoft PowerPoint</li>
+            <li>MySQL</li>
+            <li>Microsoft Access</li>
+            <li>Google Docs</li>
+            <li>Google Sheets</li>
+            <li>MYOB</li>
+          </ul>
+        </div>
+      </div>
+      <div class="meta"><span>Teknis dan perangkat lunak</span><span>Akuntansi, pajak, data</span></div>
+    </section>
+
+    <!-- Sertifikat dan penghargaan
+         Untuk menambah gambar: ganti <div class="shot empty"> pada kartu dengan
+         <div class="shot"><img src="NAMA-FILE.jpg" alt="Deskripsi singkat"></div> -->
+    <section class="panel tone-a" id="sertifikat" aria-labelledby="h-sertifikat">
+      <h2 id="h-sertifikat">Sertifikat dan Penghargaan</h2>
+
+      <div class="group">
+        <p class="eyebrow">Sertifikat dan pelatihan</p>
+        <div class="certs">
+          <figure class="cert">
+            <div class="shot"><img src="sertifikat/teknisi-akuntansi-pratama.jpg" alt="Sertifikat kompetensi Teknisi Akuntansi Pratama dari LSP Politeknik Negeri Semarang (BNSP)" loading="lazy"></div>
+            <figcaption><strong>Teknisi Akuntansi Pratama</strong><span class="sub">LSP Politeknik Negeri Semarang
+                (BNSP)</span></figcaption>
+          </figure>
+          <figure class="cert">
+            <div class="shot"><img src="sertifikat/teknisi-akuntansi-muda.jpg" alt="Sertifikat kompetensi Teknisi Akuntansi Muda dari LSP Politeknik Negeri Semarang (BNSP)" loading="lazy"></div>
+            <figcaption><strong>Teknisi Akuntansi Muda</strong><span class="sub">LSP Politeknik Negeri Semarang
+                (BNSP)</span></figcaption>
+          </figure>
+          <figure class="cert">
+            <div class="shot"><img src="sertifikat/brevet-a-b.jpg" alt="Sertifikat Pelatihan Perpajakan Brevet A dan B, Tax Center Politeknik Negeri Semarang" loading="lazy"></div>
+            <figcaption><strong>Brevet A &amp; B</strong><span class="sub">Tax Center Politeknik Negeri Semarang</span>
+            </figcaption>
+          </figure>
+          <figure class="cert">
+            <div class="shot"><img src="sertifikat/tepps.jpg" alt="Hasil TEPPS (Test of English Proficiency for Polines Students) UPA Bahasa Politeknik Negeri Semarang, skor total 759" loading="lazy"></div>
+            <figcaption><strong>Test of English Proficiency for Polines Student</strong><span class="sub">TEPPS, UPA Bahasa Politeknik Negeri Semarang. Skor 759</span></figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="group">
+        <p class="eyebrow">Penghargaan</p>
+        <div class="certs">
+          <figure class="cert">
+            <div class="shot"><img src="sertifikat/silver-medal.jpg" alt="Sertifikat Silver Medal Lomba National Essay Competition (NESCO), Juli 2025" loading="lazy"></div>
+            <figcaption><strong>Silver Medal</strong><span class="sub">Lomba National Essay Competition, 2025</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="meta"><span>BNSP · Tax Center Polines</span><span>4 sertifikat, 1 penghargaan</span></div>
+    </section>
+
+    <!-- Kontak -->
+    <section class="panel tone-c" id="kontak" aria-labelledby="h-kontak">
+      <div class="sec-head">
+        <h2 id="h-kontak">Kontak</h2>
+        <p class="lead">Terbuka untuk posisi di bidang akuntansi, finance, administrasi, dan perpajakan. Silakan hubungi
+          lewat email atau WhatsApp.</p>
+      </div>
+      <div class="contact">
+        <div class="contact-item">
+          <p class="eyebrow">Email</p>
+          <p class="value" id="email-text">inayapinkanprasetyo@gmail.com</p>
+          <div class="row">
+            <button class="btn solid" type="button" data-copy="inayapinkanprasetyo@gmail.com"
+              data-target="email-text">Salin email</button>
+          </div>
+        </div>
+        <div class="contact-item">
+          <p class="eyebrow">Telepon dan WhatsApp</p>
+          <p class="value" id="phone-text">089601044174</p>
+          <div class="row">
+            <button class="btn solid" type="button" data-copy="089601044174" data-target="phone-text">Salin
+              nomor</button>
+            <a class="btn" href="https://wa.me/6289601044174" target="_blank" rel="noopener">Buka WhatsApp</a>
+          </div>
+        </div>
+      </div>
+      <div class="meta"><span>Terbuka untuk peluang baru</span><span>Oktober 2026</span></div>
+    </section>
+
+  </main>
+
+  <dialog class="lightbox" id="lightbox" aria-label="Pratinjau gambar">
+    <img id="lb-img" alt="">
+    <div class="row"><span id="lb-cap"></span><button type="button" id="lb-close">Tutup</button></div>
+  </dialog>
+
+  <footer class="foot">
+    <p class="label">Portofolio 2026</p>
+    <span class="mark" aria-hidden="true">Inaya</span>
+  </footer>
+</div>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    var btn = document.getElementById('mode');
+
+    function current() {
+      return root.dataset.theme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    }
+    function renderLabel() {
+      btn.textContent = current() === 'dark' ? 'Mode terang' : 'Mode gelap';
+    }
+    try {
+      var saved = localStorage.getItem('portfolio-theme');
+      if (saved === 'dark' || saved === 'light') root.dataset.theme = saved;
+    } catch (e) { }
+    renderLabel();
+    btn.addEventListener('click', function () {
+      var next = current() === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try { localStorage.setItem('portfolio-theme', next); } catch (e) { }
+      renderLabel();
+    });
+
+    var dlg = document.getElementById('lightbox');
+    if (dlg && typeof dlg.showModal === 'function') {
+      document.addEventListener('click', function (e) {
+        var img = e.target.closest ? e.target.closest('.shot img, .photo img') : null;
+        if (!img) return;
+        document.getElementById('lb-img').src = img.currentSrc || img.src;
+        document.getElementById('lb-img').alt = img.alt;
+        document.getElementById('lb-cap').textContent = img.alt;
+        dlg.showModal();
+      });
+      document.getElementById('lb-close').addEventListener('click', function () { dlg.close(); });
+      dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
+    }
+
+    document.querySelectorAll('[data-copy]').forEach(function (b) {
+      var original = b.textContent;
+      function flash(text) {
+        b.textContent = text;
+        setTimeout(function () { b.textContent = original; }, 1800);
+      }
+      function selectText() {
+        var el = document.getElementById(b.getAttribute('data-target'));
+        if (!el) return;
+        var range = document.createRange();
+        range.selectNodeContents(el);
+        var sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+        flash('Teks terpilih, salin manual');
+      }
+      b.addEventListener('click', function () {
+        try {
+          navigator.clipboard.writeText(b.getAttribute('data-copy')).then(function () { flash('Tersalin'); }, selectText);
+        } catch (e) { selectText(); }
+      });
+    });
+  })();
+</script>
